@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
-
 exports.connectionDB = () => {
-    mongoose.connect("mongodb://0.0.0.0:27017/ecom");
-    var db = mongoose.connection;
-    db.on('open', () => {
-        console.log('connection successfull');
-    });
-    db.on('err', (err) => {
-        console.log(err);
-    });
+    mongoose.connect("mongodb+srv://matadeyash1:UraC4os6JF0kUR5e@cluster0.ntzeigm.mongodb.net/?retryWrites=true&w=majority", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }).then(() => {
+        console.log("Connected to database");
+    }).catch((error) => {
+        console.log("error occured " + error);
+    })
 }
