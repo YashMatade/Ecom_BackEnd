@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const { connectionDB } = require("./db/connection")
 const indexRoutes = require("./routes/index");
-
+require("dotenv").config()
 
 app.use(cors());
 app.use(express.json())
@@ -15,7 +15,7 @@ app.get("/", (req, res)=>{
     res.send("Server is running");
 })
 
-connectionDB(); const port = 5000
+connectionDB(); const port = process.env.port || 5000
 app.listen(port, () => {
     console.log("server is running on 5000");
 });
